@@ -12,6 +12,7 @@ import Facilities from './pages/Facilities'
 import Results from './pages/Results'
 import Gallery from './pages/Gallery'
 import Footer from './components/common/Footer'
+import Faculty from './pages/Faculty'
 const App = () => {
   return (
     <div className=''>
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/about" element={<About />} />
       <Route path="/academics" element={<Academics />} />
       <Route path="/admissions" element={<Admissions />} />
+      <Route path="/faculty" element={<Faculty />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/facilities" element={<Facilities />} />
       <Route path="/results" element={<Results />} />

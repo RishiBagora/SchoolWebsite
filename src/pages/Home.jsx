@@ -10,11 +10,13 @@ import NewsEventsPreview from '../components/home/NewsEventsPreview'
 import Testimonials from '../components/home/Testimonials'
 import CTASection from '../components/home/CTASection'
 
+
 const Home = () => {
   return (
     <div>
       <HeroSection/>
       <WhyChooseUs/>
+      
       <StatsSection/>
       <AcademicsPreview/>
       <FacilitiesPreview/>

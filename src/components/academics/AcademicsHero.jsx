@@ -1,126 +1,97 @@
-import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import Breadcrumb from "../common/Breadcrumb";
 import Button from "../common/Button";
 
 export default function AcademicsHero() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section
-      className="
-        relative w-full min-h-[45vh] md:min-h-[55vh]
-        flex items-center overflow-hidden
-      "
-    >
-      {/* Background Image */}
-      <img
-        src="/images/academics-hero.jpg"
-        alt="Academic classroom environment at Golden Dreams Academy Nathdwara"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+    <section className="relative w-full min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
+      
+      {/* Background Zoom Animation */}
+      <motion.div
+        initial={prefersReducedMotion ? false : { scale: 1.08 }}
+        animate={prefersReducedMotion ? {} : { scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <img
+          src="/images/academics-hero.jpg"
+          alt="Academic classroom environment"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
 
-      {/* Dark Academic Overlay */}
-      <div
-        className="
-          absolute inset-0
-          bg-gradient-to-r
-          from-[rgba(0,0,0,0.75)]
-          via-[rgba(0,0,0,0.65)]
-          to-[rgba(0,0,0,0.55)]
-        "
-      />
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
 
-      {/* Content */}
+      {/* Golden glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(244,180,0,0.18),transparent_40%)]" />
+
       <div className="relative z-10 w-full">
-        <div className="max-w-[1200px] mx-auto px-6 py-20">
+        <div className="max-w-[1200px] mx-auto px-6 py-28">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-[720px]"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
+            animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-[760px]"
           >
-            {/* Badge */}
-            <span
-              className="
-                inline-block mb-5
-                bg-[#F4B400] text-[#1F2937]
-                text-[12px] font-semibold
-                tracking-[1px]
-                px-4 py-[6px]
-                rounded-full
-              "
+            {/* Premium badge */}
+            <motion.span
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block mb-6 px-5 py-2 rounded-full 
+                         bg-[#F4B400]/15 text-[#FFD54F]
+                         backdrop-blur-md text-sm font-semibold tracking-widest"
             >
               ACADEMICS
-            </span>
+            </motion.span>
 
-            {/* Heading */}
-            <h1
-              className="
-                text-white font-bold
-                text-[28px] md:text-[36px] lg:text-[48px]
-                leading-[1.15]
-                mb-5
-              "
-            >
+            {/* Title */}
+            <h1 className="text-white font-extrabold leading-[1.1]
+                           text-[36px] sm:text-[46px] md:text-[56px] lg:text-[64px]
+                           tracking-tight mb-6">
               Structured Learning from Nursery to Class 12
             </h1>
 
             {/* Description */}
-            <p
-              className="
-                text-[#F3F4F6]
-                text-[16px]
-                leading-[1.7]
-                mb-6
-                max-w-[640px]
-              "
-            >
-              At Golden Dreams Academy, our academic framework is designed to
-              build strong foundations, ensure disciplined learning, and prepare
-              students for academic excellence at every stage.
+            <p className="text-gray-200 text-[18px] md:text-[20px] leading-[1.9] max-w-[650px]">
+              Our academic framework builds strong foundations, encourages
+              disciplined learning and prepares students for consistent
+              academic excellence at every stage.
             </p>
 
             {/* Breadcrumb */}
-            <div className="mt-3">
+            <div className="mt-6">
               <Breadcrumb
                 items={[
                   { label: "Home", link: "/" },
                   { label: "Academics" },
                 ]}
-                className="text-[#E5E7EB]"
+                className="text-gray-300"
               />
             </div>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-5">
               <button
                 onClick={() =>
-                  document
-                    .getElementById("academic-journey")
+                  document.getElementById("academic-journey")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                <Button
-                  className="px-8 py-3 text-[15px] font-semibold"
-                >
-                  Explore Academic Structure
+                <Button className="px-10 py-4 text-[16px] font-semibold shadow-lg">
+                  Explore Academic Structure →
                 </Button>
               </button>
 
               <a
                 href="/prospectus.pdf"
                 download
-                className="
-                  px-8 py-3
-                  border border-white
-                  rounded-full
-                  text-white text-[15px] font-medium
-                  hover:bg-[rgba(255,255,255,0.15)]
-                  transition-colors duration-200
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-white
-                  text-center
-                "
+                className="px-10 py-4 rounded-full border border-white/60
+                           text-white font-semibold backdrop-blur-md
+                           hover:bg-white/15 transition duration-300"
               >
                 Download Prospectus
               </a>

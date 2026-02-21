@@ -1,121 +1,80 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { 
+  ShieldCheck, 
+  Award, 
+  BookOpenCheck, 
+  Users2, 
+  ArrowUpRight 
+} from "lucide-react";
 import SectionTitle from "../common/SectionTitle";
 
-/* =========================
-   Feature Data
-========================= */
 const FEATURES = [
   {
-    icon: "🎓",
-    title: "Experienced & Dedicated Faculty",
-    description:
-      "Our teachers are well-qualified, experienced, and committed to nurturing students academically and personally.",
+    icon: <Users2 strokeWidth={1.5} size={28} />,
+    title: "Expert Pedagogy",
+    description: "Our faculty comprises seasoned educators dedicated to personalized mentorship and advanced learning methodologies.",
   },
   {
-    icon: "🛡️",
-    title: "Safe & Disciplined Campus",
-    description:
-      "We provide a secure, disciplined, and positive environment where students can learn with confidence.",
+    icon: <ShieldCheck strokeWidth={1.5} size={28} />,
+    title: "Secure Ecosystem",
+    description: "A meticulously monitored campus environment ensuring the highest standards of safety and student well-being.",
   },
   {
-    icon: "📘",
-    title: "Strong Academic Foundation",
-    description:
-      "A structured curriculum from Nursery to Class 12 ensures academic excellence and consistent growth.",
+    icon: <Award strokeWidth={1.5} size={28} />,
+    title: "Academic Excellence",
+    description: "A rigorous K-12 curriculum focused on cognitive development and preparing students for global opportunities.",
   },
   {
-    icon: "👥",
-    title: "Holistic Development",
-    description:
-      "Along with academics, we encourage sports, cultural activities, and life skills for all-round development.",
+    icon: <BookOpenCheck strokeWidth={1.5} size={28} />,
+    title: "Holistic Curricula",
+    description: "Integrating competitive sports, performing arts, and leadership training into the core academic journey.",
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section
-      className="
-        bg-[#FAF7F2]
-        pt-20 pb-20
-        overflow-hidden
-      "
-      role="region"
-      aria-label="Why choose Golden Dreams Academy"
-    >
-      <div className="max-w-[1200px] mx-auto px-6">
-        {/* =========================
-            Section Header
-        ========================= */}
+    <section className="bg-white py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        
         <SectionTitle
-          subtitle="WHY CHOOSE US"
-          title="Why Parents Trust Golden Dreams Academy"
-          description="We focus on quality education, strong values, and a safe learning environment to ensure every child reaches their full potential."
-          align="center"
+          subtitle="Institutional Excellence"
+          title="The Golden Dreams Advantage"
+          description="Setting the benchmark for quality education in Nathdwara through innovation and values."
+          align="left" // Professional layouts often look better with left-alignment
         />
 
-        {/* =========================
-            Feature Grid
-        ========================= */}
-        <div
-          className="
-            grid gap-8
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-4
-            mt-12
-          "
-        >
-          {FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="
-                bg-white
-                rounded-[14px]
-                px-6 py-8
-                text-center
-                shadow-[0_6px_20px_rgba(0,0,0,0.08)]
-                transition-all duration-300 ease-out
-                hover:-translate-y-1.5
-                hover:shadow-[0_10px_28px_rgba(0,0,0,0.12)]
-                motion-reduce:transition-none
-                motion-reduce:hover:transform-none
-              "
+        <div className="grid gap-px bg-slate-200 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-16 border border-slate-200 rounded-2xl overflow-hidden shadow-2xl shadow-slate-200/50">
+          {FEATURES.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group bg-white p-10 hover:bg-slate-50 transition-colors duration-500 relative"
             >
-              {/* Icon */}
-              <div
-                className="
-                  text-[36px]
-                  mb-4
-                  text-[#7B1E1E]
-                "
-                aria-hidden="true"
-              >
+              {/* Minimalist Icon Block */}
+              <div className="mb-8 text-slate-400 group-hover:text-amber-600 transition-colors duration-500">
                 {feature.icon}
               </div>
 
-              {/* Title */}
-              <h3
-                className="
-                  text-[18px]
-                  font-semibold
-                  text-[#1F2937]
-                  mb-3
-                "
-              >
+              <h3 className="text-lg font-bold text-slate-900 mb-4 tracking-tight">
                 {feature.title}
               </h3>
 
-              {/* Description */}
-              <p
-                className="
-                  text-[15px]
-                  leading-[1.7]
-                  text-[#4B5563]
-                "
-              >
+              <p className="text-slate-500 leading-relaxed text-sm mb-6">
                 {feature.description}
               </p>
-            </div>
+
+              {/* Subtle "Learn More" Hint */}
+              {/* <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-300 group-hover:text-amber-600 transition-all duration-500">
+                Details <ArrowUpRight size={14} />
+              </div>
+               */}
+              {/* Border Accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </motion.div>
           ))}
         </div>
       </div>

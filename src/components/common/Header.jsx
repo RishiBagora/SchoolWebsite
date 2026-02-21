@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "About Us", path: "/about" },
   { label: "Academics", path: "/academics" },
   { label: "Admissions", path: "/admissions" },
+  { label: "Faculty", path: "/faculty" },
   { label: "Facilities", path: "/facilities" },
   { label: "Results", path: "/results" },
   { label: "Gallery", path: "/gallery" },
